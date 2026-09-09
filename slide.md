@@ -114,8 +114,8 @@ class: lead
 <div class="two-column">
 <div>
 
-* Baselining is defining the expected, normal operating conditions of an IT environment is essential to establish a reference point and swiftly spot potentially dangerous outliers.
-* Analysts must correlate events to discover meaningful connections between artifacts scattered across network, application, and endpoint logs to piece together the complete narrative of a security incident.
+* Thiết lập baseline là việc xác định các điều kiện hoạt động bình thường, theo dự kiến của một môi trường IT. Điều này rất cần thiết để tạo ra một điểm tham chiếu nhằm nhanh chóng phát hiện outlier có khả năng gây nguy hiểm.
+* Analysts phải correlate events để tìm ra các mối liên kết có ý nghĩa giữa những artifact nằm rải rác trong log mạng, ứng dụng và endpoint, từ đó xâu chuỗi lại thành một bức tranh toàn cảnh về một sự cố bảo mật.
 
 </div>
 <div>
