@@ -1728,3 +1728,199 @@ code {
 - Bổ sung context cho event logs mà bình thường Windows event logs bỏ sót, vd: `file hashes`, `command-lines`, `unique GUID` của các tiến trình cha-con.
 - Dựa vào các tệp cấu hình XML có thể tùy chỉnh (như các cấu hình chuẩn trong ngành của <span class="config-badge">SwiftOnSecurity</span> hoặc <span class="config-badge">SysmonModular</span> của Olaf Hartong) để lọc bỏ các thông tin nhiễu.
 - Ghi dữ liệu trực tiếp vào một kênh của riêng nó (<span class="log-path">Applications and Services Logs > Microsoft > Windows > Sysmon > Operational</span>), cho phép nó tích hợp liền mạch với SIEM như Winlogbeat hoặc Wazuh.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 25px;
+  display: block;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Specific styling to make the command blocks stand out */
+.cmd-block {
+  background-color: #2d3748; /* Dark slate background */
+  color: #48bb78; /* Terminal green text */
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 22px;
+  display: inline-block;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.highlight-blue {
+  color: #3182ce;
+  font-weight: bold;
+}
+</style>
+
+# Sysmon
+
+<span class="concept-title">Installing and Preparing Sysmon</span>
+
+- Cần <span class="highlight-blue">Sysmon binary</span> (tải xuống độc lập hoặc cùng với Sysinternals suite) và một <span class="highlight-blue">tệp cấu hình XML</span> để lọc các sự kiện không liên quan.
+- Phải được cài đặt thông qua Command Prompt chạy với quyền admin. Syntax: <span class="cmd-block">sysmon.exe -accepteula -i config.xml</span>
+- Có thể cập nhật các quy tắc lọc event và đẩy cấu hình XML mới vào Sysmon đang chạy mà không cần khởi động lại dịch vụ: <span class="cmd-block">sysmon.exe -c new_config.xml</span>
+- Sau khi cài đặt, nó hoạt động liên tục dưới dạng protected system service. Xác minh trạng thái hoạt động bằng câu lệnh:
+<span class="cmd-block">sc query sysmon</span>
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 25px;
+  display: block;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Styling for XML Tags */
+.xml-tag {
+  background-color: #FAF5FF; /* Light purple */
+  color: #553C9A; /* Deep purple */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 22px;
+}
+
+/* Styling for specific filtering logic (include/exclude) */
+.logic-rule {
+  background-color: #EBF8FF; /* Light cyan */
+  color: #2C7A7B; /* Deep teal */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 22px;
+}
+
+/* Standard inline code for operators */
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+}
+</style>
+
+# Sysmon
+
+<span class="concept-title">Cutting out the Noise</span>
+
+- Sysmon nếu như không lọc các event bình thường sẽ ghi lại mọi thứ. Các hoạt động ở trạng thái bình thường của hệ điều hành sẽ áp đảo event cần được phân tích về mặt số lượng, khiến cho việc tìm kiếm trở nên khó khăn.
+- Tất cả logic lọc được tích hợp bên trong phần <span class="xml-tag">&lt;EventFiltering&gt;</span> của tệp cấu hình. Nó hoạt động dựa trên hai thuộc tính chính: <span class="logic-rule">onmatch="include"</span> (chỉ ghi nhật ký các kết quả khớp này) hoặc <span class="logic-rule">onmatch="exclude"</span> (ghi lại mọi thứ ngoại trừ các kết quả khớp này).
+- Có thể dựa vào các toán tử như `is`, `contains`, `begin with`, và `end with` để lọc một cách chuẩn xác.
+- Chủ động loại trừ legit binaries được tin cậy giúp giảm tình trạng false positive, giảm chi phí tiếp nhận dữ liệu từ SIEM và giảm workload cho analysts.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 25px;
+  display: block;
+}
+
+p, li {
+  font-size: 22px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+/* Specific styling for Sysmon Event IDs to make them pop */
+.event-id {
+  background-color: #FED7D7; /* Light red */
+  color: #9B2C2C; /* Dark red text */
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 24px;
+}
+
+/* Styling for the Attack Phase text */
+.attack-phase {
+  color: #2b6cb0; /* Deep blue */
+  font-weight: bold;
+  font-size: 24px;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #4a5568; /* Slate gray for paths/binaries */
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 20px;
+  font-family: monospace;
+}
+</style>
+
+# Sysmon
+
+<span class="concept-title">Hunting Metasploit with Sysmon</span>
+
+- <span class="attack-phase">Initial Execution</span> ➔ <span class="event-id">Event ID 1</span>
+  Meterpreter payload và staged binaries thường chạy từ các thư mục người dùng có quyền ghi (ví dụ: `C:\Users...\AppData\Local\Temp`) và hiển thị hệ thống mối quan hệ cha-con bất thường.
+
+- <span class="attack-phase">Process Migration & Injection</span> ➔ <span class="event-id">Event ID 8</span> & <span class="event-id">Event ID 10</span>
+  - **Event ID 8 (CreateRemoteThread):** Phát hiện payload inject một remote thread vào legit system binaries như `explorer.exe`, `svchost.exe`, hoặc `notepad.exe`.
+  - **Event ID 10 (ProcessAccess):** Phát hiện processes yêu cầu đặc quyền cao để truy cập vào vùng nhớ của một process từ xa.
+
+- <span class="attack-phase">Command & Control / Beaconing</span> ➔ <span class="event-id">Event ID 3</span>
+  Giám sát các kết nối TCP outbound xuất phát từ những binaries bất thường ➔ reverse shell.
+
+
