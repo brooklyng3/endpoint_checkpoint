@@ -875,3 +875,856 @@ code {
   - Khởi tạo các kết nối mạng <span class="network-alert">TCP/IP outbound</span> bất thường.
 
 
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+}
+
+p, li {
+  font-size: 17px;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+/* Subheader styling for the category */
+h2 {
+  color: #2d3748;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Styling for the tool names to make them pop */
+.tool-name {
+  background-color: #2b6cb0; /* Professional blue */
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 19px;
+  display: inline-block;
+
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 1px 3px;
+  border-radius: 4px;
+  font-size: 17px;
+  font-family: monospace;
+}
+
+/* Highlight specifically for VirusTotal */
+.vt-badge {
+  background-color: #e2e8f0;
+  color: #1a202c;
+  border: 1px solid #718096;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 17px;
+}
+</style>
+
+# Sysinternals
+
+<h2>File and Disk Utilities</h2>
+
+<span class="tool-name">Sigcheck</span>
+- Một tiện ích dòng lệnh được sử dụng để xác minh metadata của tệp, trạng thái bảo mật và chuỗi chứng chỉ số.
+- Tích hợp trực tiếp với <span class="vt-badge">VirusTotal</span> và mang lại hiệu quả cao trong việc săn tìm các unsigned executables trong các thư mục cốt lõi (sử dụng cờ `-u` và `-e`).
+
+<span class="tool-name">Streams</span>
+- Một công cụ được thiết kế để xem các Alternate Data Streams (ADS) ẩn được đính kèm vào các tệp.
+- Phát hiện phần mềm độc hại đang che giấu payload bên ngoài luồng `$DATA` mặc định, hoặc để kiểm tra xem tệp có nguồn gốc từ Internet hay không (`Web - Zone.Identifier`).
+
+<span class="tool-name">SDelete</span>
+- Một tiện ích dọn dẹp vĩnh viễn các tệp, thư mục, hoặc vùng không gian đĩa chưa được cấp phát bằng cách sử dụng giao thức xóa sạch 3 bước.
+- Thường xuyên được attackers sử dụng để xóa dữ liệu và xóa dấu vết.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+p, li {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+h2 {
+  color: #2d3748;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 5px;
+  display: block;
+
+}
+
+.tool-name {
+  background-color: #2b6cb0;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 22px;
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Layout for the text and image */
+.two-column {
+  display: grid;
+  grid-template-columns: 50% 50%; /* Equal split for the text and the wide image */
+  gap: 15px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.two-column img {
+  max-width: 100%;
+  max-height: 400px; /* Constrains the image so it fits neatly */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid #4a5568;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 19px;
+  font-family: monospace;
+}
+</style>
+
+# Sysinternals
+
+<h2>Networking Utilities: TCPView</h2>
+
+<div class="two-column">
+<div class="column">
+
+
+- Phiên bản nâng cấp có GUI của `netstat`, có chức năng liệt kê tất cả các TCP và UDP network endpoints đang hoạt động.
+- Map network traffic với quá trình thực thi cục bộ bằng cách map trực tiếp các local/remote addresses, cổng và trạng thái kết nối (connection states) với PID sở hữu chúng.
+- Cung cấp tính năng Lọc trạng thái (ví dụ: chỉ cô lập các kết nối đã thiết lập - "Established") đối với lưu lượng TCP.
+- Thêm `Tcpvcon` là phiên bản CLI của TCPView.
+
+</div>
+<div class="column">
+
+![TCPView Interface](tcpview.png)
+
+</div>
+</div>
+
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+p, li {
+  font-size: 21px; /* Scaled slightly to fit 5 dense bullet points */
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+
+h2 {
+  color: #2d3748;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.tool-name {
+  font-weight: bold;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 1px 3px;
+  border-radius: 4px;
+  font-size: 19px;
+  font-family: monospace;
+}
+
+/* Subtle highlight for critical security terms */
+.alert-text {
+  color: #c53030;
+  font-weight: bold;
+}
+</style>
+
+# Sysinternals
+
+<h2>Process Utilities</h2>
+
+- <span class="tool-name">Process Explorer:</span> Theo dõi process, có thể xem các handle đang mở (tệp, khóa registry) và các DLL được tải cho mỗi process, đi kèm với tính năng xác minh chữ ký và phân loại trạng thái bằng màu sắc.
+- <span class="tool-name">Process Monitor (ProcMon):</span> Ghi lại hoạt động file system, registry và process/thread trong thời gian thực; có thể dùng bộ lọc để xử lý khối lượng sự kiện khổng lồ.
+- <span class="tool-name">Autoruns:</span> Kiểm tra các app khởi động cùng hệ thống, các khóa `Run/RunOnce`, các scheduled tasks và `IFEO` để phát hiện <span class="alert-text">persistence</span>.
+- <span class="tool-name">ProcDump:</span> Dump bộ nhớ của các process dựa trên mức sử dụng CPU tăng vọt, các ngoại lệ hoặc manual flags, ghi lại toàn bộ user-mode memory space của các tiến trình như `lsass.exe`.
+- <span class="tool-name">PsExec:</span> Thực thi các lệnh console tương tác giữa các máy tính thông qua SMB/named pipes, thường xuyên bị lạm dụng cho <span class="alert-text">lateral movement</span>.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+  h1 {
+    text-align: center;
+    margin-top: 0px;
+    padding-bottom: 5px; 
+    border-bottom: none;
+    margin-bottom: 5px;
+  }
+  
+  p, li {
+    font-size: 24px; 
+    line-height: 1.5;
+  }
+
+  h2 {
+    color: #2d3748;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .tool-name {
+    background-color: #2b6cb0;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 24px;
+    display: inline-block;
+  }
+
+  .highlight-term {
+    color: #2b6cb0;
+    font-weight: bold;
+  }
+</style>
+
+# Sysinternals
+
+<h2>Security Utilities - Sysmon (System Monitor)</h2>
+
+
+* Hoạt động như một system service và device driver, chạy liên tục ngay cả khi khởi động lại để liên tục ghi lại hoạt động vào Windows event log.
+* Cung cấp khả năng giám sát, xác định <span class="highlight-term">malicious anomalies</span> bằng cách theo dõi high-fidelity indicators như việc tạo tiến trình, kết nối mạng, và sửa mốc thời gian tạo tệp (file creation time).
+* Được thiết kế để defenders có thể tổng hợp dữ liệu từ xa thông qua tính năng Windows Event Collection hoặc các SIEM agents.
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+p, li {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+h2 {
+  color: #2d3748;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+
+/* Two-column layout */
+.two-column {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 15px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.two-column img {
+  max-width: 100%;
+  max-height: 380px; /* Constrains the screenshot height */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid #4a5568;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 19px;
+  font-family: monospace;
+}
+</style>
+
+# Sysinternals
+
+<h2>System Information - WinObj</h2>
+
+<div class="two-column">
+<div class="column">
+
+- Sử dụng API Windows NT gốc (thông qua `NTDLL.DLL`) để trực quan hóa và tương tác với namespace nội bộ của NT Object Manager.
+- Rất hiệu quả trong việc kiểm tra các ranh giới hệ thống, chẳng hạn như session 0 và session 1 (Hệ thống vs người dùng).
+- Dùng để xác minh core process isolation.
+
+</div>
+<div class="column">
+
+![WinObj Interface](winobj.png)
+
+</div>
+</div>
+
+---
+<!-- class: default -->
+
+<style scoped>
+  h1 {
+    text-align: center;
+    margin-top: 0px;
+    padding-bottom: 5px; 
+    border-bottom: none;
+    margin-bottom: 5px;
+  }
+  
+  p, li {
+    font-size: 24px; 
+    line-height: 1.5;
+  }
+
+  h2 {
+    color: #2d3748;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .tool-name {
+    font-weight: bold;
+  }
+</style>
+
+# Sysinternals
+
+<h2>Miscellaneous Utilities</h2>
+
+<span class="tool-name">Strings</span>
+* Một command-line tool quét các binary executables hoặc memory dumps để trích xuất văn bản ANSI và UNICODE.
+
+<span class="tool-name">BgInfo</span>
+* Tự động tạo và hiển thị các thông số hệ thống quan trọng trực tiếp trên nền desktop.
+
+<span class="tool-name">RegJump</span>
+* Dùng để mở chính xác một registry key ngay lập tức bằng cách cung cấp đường dẫn chi tiết cho registry đó.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: none;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Styling for the main conceptual question */
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c; /* Deep black/slate */
+  margin-bottom: 15px;
+  display: block;
+
+}
+
+/* Highlight important technical terms */
+.highlight-blue {
+  color: #3182ce;
+  font-weight: bold;
+}
+
+.highlight-red {
+  color: #e53e3e;
+  font-weight: bold;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #2d3748;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+  font-weight: bold;
+}
+</style>
+
+# Windows Event Logs
+
+<span class="concept-title">What are Windows Event Logs?</span>
+
+- Một bản ghi tập trung, theo trình tự thời gian về các hoạt động của hệ thống, bảo mật và ứng dụng do hệ điều hành Windows tạo ra, được lưu trữ dưới định dạng `*.evtx`, dựa trên XML.
+- Nền tảng của hoạt động audit trên Windows xoay quanh ba tệp logs chính: <span class="highlight-blue">System</span>, <span class="highlight-blue">Application</span>, và <span class="highlight-blue">Security</span>.
+- Mỗi log entry chứa metadata quan trọng. Các trường quan trọng nhất là <span class="highlight-red">Event ID</span>, Source, Timestamp, và Event Data/XML payload.
+- Chúng là các bằng chứng được sử dụng để dựng execution timelines, theo dõi các dấu vết/chuyển động đáng ngờ, và thiết lập baseline để kích hoạt các cảnh báo SIEM tự động.
+
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.tool-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Highlight styling for the Run command */
+.run-cmd {
+  background-color: #2b6cb0;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 24px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+}
+
+/* Warning text styling for the limitations */
+.warning-text {
+  color: #c53030;
+  font-style: italic;
+  font-weight: bold;
+}
+</style>
+
+# Windows Event Logs
+
+<div style="margin-bottom: 15px; text-align: center;">
+  <span class="tool-title">Event Viewer - eventvwr.msc</span>
+</div>
+
+- Một tool Microsoft Management Console (MMC) được tích hợp sẵn, sử dụng để đọc, tìm kiếm và quản lý các tệp nhật ký `.evtx` trên các endpoints cục bộ và từ xa.
+- Loại bỏ các thông tin nhiễu bằng cách xây dựng các bộ lọc dựa trên XML (`XPath`) để lọc theo các Event ID, người dùng hoặc khung thời gian cụ thể.
+- <span class="warning-text">Lưu ý:</span> Hiệu quả khi phân tích log file nhỏ trong 1 máy trạm, nhưng chậm và dễ bị treo khi phân tích log lớn ➔ Nên sử dụng các giải pháp thay thế bằng command-line hoặc tích hợp SIEM.
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.tool-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.cmd-badge {
+  background-color: #2b6cb0;
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 24px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+}
+
+/* Deep red styling for malicious commands / alerts */
+.malicious-cmd {
+  background-color: #fed7d7; /* Light red background */
+  color: #9b2c2c; /* Dark red text */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/* Specific styling for Event IDs so they stand out */
+.event-id {
+  color: #c53030;
+  font-weight: bold;
+  border-bottom: 2px solid #c53030;
+}
+</style>
+
+# Windows Event Logs
+
+<div style="margin-bottom: 15px; text-align: center;">
+  <span class="tool-title">Windows Event Utility - wevtutil.exe</span>
+</div>
+
+- Native command-line administrative tool được sử dụng để truy xuất log metadata, truy vấn các sự kiện, xuất log, và cài đặt hoặc gỡ cài đặt các event manifests.
+- Thường xuyên bị lợi dụng bởi attackers để clear log: <span class="malicious-cmd">wevtutil cl Security</span>
+- Cần giám sát <span class="event-id">Event ID 4688</span> hoặc <span class="event-id">Sysmon ID 1</span> cho text `"cl"`. Event có từ này thường sẽ đi kèm với <span class="event-id">Event ID 1102</span> (The audit log was cleared).
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: none;
+  margin-bottom: 5px;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.tool-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Deep blue for the PowerShell cmdlet badge */
+.ps-badge {
+  background-color: #1A365D; /* Darker, "PowerShell" blue */
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 24px;
+  margin-left: 10px;
+  vertical-align: text-bottom;
+}
+
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+}
+
+/* Specific styling for PowerShell Parameters */
+.ps-param {
+  background-color: #EBF8FF; /* Very light cyan */
+  color: #2C7A7B; /* Deep teal */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 22px;
+}
+</style>
+
+# Windows Event Logs
+
+<div style="margin-bottom: 15px; text-align: center;">
+  <span class="tool-title">PowerShell's Get-WinEvent</span>
+</div>
+
+- Một cmdlet PowerShell được sử dụng để truy vấn cả classic event logs và ETW, vượt trội hoàn toàn so với lệnh `Get-EventLog` cũ.
+- Sức mạnh thực sự của nó nằm ở việc parse các tập dữ liệu khổng lồ trước khi chuyển objects vào pipeline, sử dụng các tham số như <span class="ps-param">-FilterHashtable</span> và <span class="ps-param">-FilterXPath</span> để thực hiện các query cực nhanh.
+- Có thể sử dụng để viết scripts cho incident response, tìm kiếm nhanh chóng event mong muốn không cần qua GUI.
+
+---
+<!-- class: default -->
+
+<style scoped>
+  h1 {
+    text-align: center;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border-bottom: none;
+  }
+  
+  p, li {
+    font-size: 24px; 
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .concept-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1a202c; 
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* Inline code for files and commands */
+  code {
+    background-color: #edf2f7;
+    color: #c53030;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 22px;
+    font-family: monospace;
+  }
+
+  /* Specific styling for XML Nodes/Fields */
+  .xml-node {
+    background-color: #FAF5FF; /* Very light purple */
+    color: #553C9A; /* Deep purple */
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 22px;
+  }
+</style>
+
+# Windows Event Logs
+
+<span class="concept-title">XPath Queries</span>
+
+* Được sử dụng để điều hướng, truy vấn và trích xuất các node dữ liệu cụ thể trực tiếp từ cấu trúc XML của các tệp nhật ký Windows `.evtx`.
+* Lọc dữ liệu <span class="xml-node">EventData</span>, ví dụ như là một <span class="xml-node">TargetUserName</span> hoặc <span class="xml-node">IpAddress</span> cụ thể.
+* Là underlying engine cho Event Viewer GUI filter, và có thể sử dụng qua cả lệnh `wevtutil` và `Get-WinEvent`.
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 30px;
+  display: block;
+}
+
+/* Table Container to center it on the slide */
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Custom styling for the Markdown table */
+table {
+  border-collapse: collapse;
+  width: 85%; /* Keeps the table from stretching too wide */
+  font-size: 22px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+th {
+  background-color: #2b6cb0;
+  color: white;
+  text-align: left;
+  padding: 12px 20px;
+  border: none;
+}
+
+td {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+/* Alternating row colors for readability */
+tr:nth-child(even) {
+  background-color: #f7fafc;
+}
+
+/* Specific styling to make the IDs pop */
+.event-id {
+  color: #c53030;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 24px;
+}
+</style>
+
+# Windows Event Logs
+
+<span class="concept-title">Critical Security Event IDs</span>
+
+<div class="table-container">
+
+| Event ID | Mô tả sự kiện (Description) |
+|:---|:---|
+| <span class="event-id">4624</span> & <span class="event-id">4625</span> | Successful and failed authentication |
+| <span class="event-id">4688</span> | Process creation |
+| <span class="event-id">7045</span> | A new service was installed |
+| <span class="event-id">1102</span> | Audit Log Cleared |
+| <span class="event-id">4104</span> | PowerShell Script Block Logging |
+
+</div>
+
+---
+<!-- class: default -->
+
+<style scoped>
+h1 {
+  text-align: center;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  border-bottom: none;
+  margin-bottom: 15px;
+}
+
+/* Main category sub-header styling */
+.concept-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 20px;
+  display: block;
+}
+
+p, li {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* Inline code highlighting for specific technical terms/paths */
+code {
+  background-color: #edf2f7;
+  color: #c53030;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 22px;
+  font-family: monospace;
+}
+
+/* Specific highlight for renowned security configs */
+.config-badge {
+  background-color: #EBF8FF; /* Light cyan */
+  color: #2C7A7B; /* Dark teal */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 22px;
+}
+
+/* Highlight the log path to make it stand out */
+
+</style>
+
+# Sysmon
+
+<span class="concept-title">Sysmon (System Monitor) Overview</span>
+
+- A background system service and device driver thuộc bộ công cụ Sysinternals giúp nâng cấp đáng kể logging capabilities của Windows.
+- Bổ sung context cho event logs mà bình thường Windows event logs bỏ sót, vd: `file hashes`, `command-lines`, `unique GUID` của các tiến trình cha-con.
+- Dựa vào các tệp cấu hình XML có thể tùy chỉnh (như các cấu hình chuẩn trong ngành của <span class="config-badge">SwiftOnSecurity</span> hoặc <span class="config-badge">SysmonModular</span> của Olaf Hartong) để lọc bỏ các thông tin nhiễu.
+- Ghi dữ liệu trực tiếp vào một kênh của riêng nó (<span class="log-path">Applications and Services Logs > Microsoft > Windows > Sysmon > Operational</span>), cho phép nó tích hợp liền mạch với SIEM như Winlogbeat hoặc Wazuh.
